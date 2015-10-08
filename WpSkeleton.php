@@ -2,9 +2,9 @@
 
 /*
   Plugin Name: Woocommerce Compra Directa
-  Plugin URI:  https://github.com/ctala/wp-skeleton
+  Plugin URI:  https://github.com/ctala/nefarious-tanuki
   Description: Plugin que permite la compra directa de los productos agregandolos al carrito y llevando a la página de checkout.
-  Version:     1.0
+  Version:     0.1
   Author:      Cristian Tala Sánchez
   Author URI:  http://www.cristiantala.cl
   License:     MIT
