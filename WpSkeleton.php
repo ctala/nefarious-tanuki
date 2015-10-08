@@ -35,7 +35,7 @@ function agregarProductoCarrito($idProducto) {
 
 // Registramos los menus correspondientes
 
-function ctala_setup_admin_menu() {
+function ctala_setup_admin_menu_compradirecta() {
     if (empty($GLOBALS['admin_page_hooks']['CTala'])) {
         add_menu_page('CTala', 'CTala', 'manage_options', 'ctala', 'ctala_view_admin');
     }
@@ -46,7 +46,7 @@ function ctala_view_admin() {
     include_once 'views/admin/viewAdmin.php';
 }
 
-if (!has_action('admin_menu', 'ctala_setup_admin_menu')) {
-    add_action('admin_menu', 'ctala_setup_admin_menu');
+if (!has_action('admin_menu', 'ctala_setup_admin_menu_compradirecta')) {
+    add_action('admin_menu', 'ctala_setup_admin_menu_compradirecta');
 }
 ?>
