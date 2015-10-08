@@ -14,9 +14,39 @@
  */
 include_once 'helpers/debug.php';
 
-function compraDirecta($idProducto = 8) {
+function compraDirecta() {
+
+    log_me("SE RECIBE PARAMETRO COMPRA DIRECTA");
+
+
+    if (!isset($_GET['linkCompraDirecta']))
+        return true;
+
+    if (!isset($_GET['idProducto']))
+        return true;
+
+    $idProducto = $_GET['idProducto'];
+    log_me("SE INICIA COMPRA DE PRODUCTO ID  : $idProducto");
+
+    //Revisamos si el idProducto es numerico.
+    if (!is_numeric($idProducto)) {
+        return true;
+    }
+
+    //Ya tenemos el producto para el cual queremos hacer la compra directa.
+    //Ahora revisamos que existe.
+    $args = array('post_type' => 'product', 'id' => $idProducto);
+    $loop = new WP_Query($args);
+
+
+    if (!(count($loop) == 1)) {
+        log_me("NO EXISTE EL PRODUCTO CON ID $idProducto");
+        return true;
+    }
+
+
     global $woocommerce;
-    //Revisamos que el producto existe, si no existe volvemos al home.
+    
     //Vaciamos Carrito
     //Agregamos al carrito
 
@@ -29,6 +59,8 @@ function compraDirecta($idProducto = 8) {
     exit;
 }
 
+add_action('init', 'compraDirecta');
+
 function agregarProductoCarrito($idProducto) {
     
 }
@@ -36,13 +68,16 @@ function agregarProductoCarrito($idProducto) {
 // Registramos los menus correspondientes
 
 function ctala_setup_admin_menu_compradirecta() {
-    if (empty($GLOBALS['admin_page_hooks']['CTala'])) {
-        add_menu_page('CTala', 'CTala', 'manage_options', 'ctala', 'ctala_view_admin');
+    if (empty($GLOBALS['admin_page_hooks']['ctala_admin'])) {
+        add_menu_page(
+                'Herramientras extra para Woocommerce por Cristian Tala', 'Extra Tools', 'manage_options', 'ctala_admin', 'ctala_view_admin');
     }
-//    add_submenu_page('ctala', 'SubMen', 'Admin Page', 'manage_options', 'myplugin-top-level-admin-menu', 'myplugin_admin_page');
+
+    add_submenu_page('ctala_admin', 'Generar Link Directo de Compra', 'Generar Link Directo de Compra', 'manage_options', 'crearLinkDirecto', 'ctala_view_admin_compradirecta'
+    );
 }
 
-function ctala_view_admin() {
+function ctala_view_admin_compradirecta() {
     include_once 'views/admin/viewAdmin.php';
 }
 
