@@ -46,5 +46,7 @@ function ctala_view_admin() {
     include_once 'views/admin/viewAdmin.php';
 }
 
-add_action('admin_menu', 'ctala_setup_admin_menu');
+if (!has_action('admin_menu', 'ctala_setup_admin_menu')) {
+    add_action('admin_menu', 'ctala_setup_admin_menu');
+}
 ?>
