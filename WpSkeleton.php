@@ -39,7 +39,7 @@ function ctala_setup_admin_menu() {
     if (empty($GLOBALS['admin_page_hooks']['CTala'])) {
         add_menu_page('CTala', 'CTala', 'manage_options', 'ctala', 'ctala_view_admin');
     }
-    add_submenu_page('ctala', 'SubMen', 'Admin Page', 'manage_options', 'myplugin-top-level-admin-menu', 'myplugin_admin_page');
+//    add_submenu_page('ctala', 'SubMen', 'Admin Page', 'manage_options', 'myplugin-top-level-admin-menu', 'myplugin_admin_page');
 }
 
 function ctala_view_admin() {
