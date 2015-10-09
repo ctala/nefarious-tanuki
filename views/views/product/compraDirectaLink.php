@@ -5,14 +5,9 @@ $url = $site . "?linkCompraDirecta&idProducto=" . $idProducto;
 
 log_me($url);
 ?>
-<form>
-    <label for="linkCompraDirecta">Link Compra Directa : </label>
 
 
-    <input name="post_compraDirecta" value="<?php echo $url ?>" 
-           id="title"
-           type="text"
-           disabled="false"
-           style="width: 100%"
-           >
-</form> 
+<div id="edit-slug-box" class="hide-if-no-js">
+    <strong>Link Compra Directa :</strong>
+    <span id="sample-permalink" tabindex="-1"><?php echo $url ?></span>
+</div>
