@@ -61,7 +61,7 @@ if (in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_
         //Agregamos al carrito
         log_me("Agregamos a carrito");
         WC()->cart->add_to_cart($idProducto);
-        
+
 
         //Reenviamos a la página de Checkout.
         $checkout_url = $woocommerce->cart->get_checkout_url();
@@ -71,6 +71,17 @@ if (in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_
     }
 
     add_action('wp_loaded', 'compraDirecta');
+
+    add_action('edit_form_top', 'compraDirectaLinkInfo');
+
+    function compraDirectaLinkInfo($post) {
+        if (in_array($post->post_type, array('product'))) {
+            $post_status = get_post_status();
+            if ($post_status == 'publish') {
+                include_once plugin_dir_path(__FILE__) . '/views/views/product/compraDirectaLink.php';
+            }
+        }
+    }
 
 // Registramos los menus correspondientes
 
