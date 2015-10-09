@@ -1,7 +1,7 @@
 <?php
 
 /*
-  Plugin Name: Woocommerce Compra Directa
+  Plugin Name: Woo Compra Directa
   Plugin URI:  https://github.com/ctala/nefarious-tanuki
   Description: Plugin que permite la compra directa de los productos agregandolos al carrito y llevando a la página de checkout.
   Version:     0.1
